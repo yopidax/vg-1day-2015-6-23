@@ -138,6 +138,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="messageTextView" destination="Lhg-Dc-uxP" id="Y5X-Cg-E1p"/>
+                        <outlet property="usernameTextField" destination="tsd-3Z-A5l" id="2A0-bx-XPc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5w-qQ-jfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
