@@ -26,7 +26,7 @@ $app->post('/messages', function (Request $request) use ($app) {
 
     if ($body === "uranai") {
       $username = "bot";
-      $body = "吉";
+      $body = $app->getFortuneTelling();
     }
 
     $createdMessage = $app->createMessage($username, $body, base64_encode(file_get_contents($app['icon_image_path'])));

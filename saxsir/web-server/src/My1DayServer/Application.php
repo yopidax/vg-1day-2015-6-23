@@ -200,4 +200,13 @@ class Application extends \Silex\Application
 
         return $result;
     }
+
+    /**
+     * 占い結果を返す
+     *
+     * @return [String] 占い結果
+     */
+    public function getFortuneTelling() {
+      return "吉";
+    }
 }
