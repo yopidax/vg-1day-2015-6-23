@@ -21,6 +21,17 @@ function sendMessage(username, body) {
 }
 
 /**
+ *
+ */
+function removeMessage(id) {
+	var success = function() {
+		reloadMesages();
+	};
+	var error = function() { console.log("error") };
+	deleteMessage(id, success, error);
+}
+
+/**
  * メッセージリスト挿入
  */
 function appendMessages(data) {
@@ -39,6 +50,7 @@ function appendMessage(message) {
 	var escapeBody = $("<div/>").text(message.body).html();
 	var escapeCreatedAt = $("<div/>").text(message.created_at).html();
 	var escapeIcon = $("<div/>").text(message.icon).html();
+	var escapeId = $("<div/>").text(message.id).html();
 
     var messageHTML = '<tr><td>' +
         '<div class="media message">' +
@@ -50,6 +62,9 @@ function appendMessage(message) {
         escapeBody + '<br>' +
         escapeCreatedAt +
 	    '</div>' +
+        '<div class="media-right">' +
+        '<input type="button" class="btn btn-primary delete-message" value="削除" id="' + escapeId + '"></input>' +
+        '</div>' +
         '</div>' +
         '</td></tr>';
 	$("#message-table").append(messageHTML);
@@ -78,6 +93,19 @@ function postMessage(username, body, success, error) {
         url: postMessageUri,
         data: JSON.stringify({"username":username, "body":body}), 
         dataType: "json",
+        })
+    .done(function(data) { success() })
+    .fail(function() { error() });
+}
+
+/**
+ * APIリクエストコメント削除
+ */
+function deleteMessage(id, success, error) {
+    var deleteMessageUri = "http://localhost:8888/messages/" + id;
+    return $.ajax({
+        type: "delete",
+        url: deleteMessageUri,
         })
     .done(function(data) { success() })
     .fail(function() { error() });
