@@ -25,5 +25,6 @@ class MessageTableViewCell: UITableViewCell {
         self.iconImageView.image = message.icon
         self.messageLabel.text = message.body
         // Mission1-1 UILabel のインスタンス変数に created_at の値を代入
+        self.createdAtLabel.text = message.createdAt
     }
 }
