@@ -90,6 +90,7 @@ class Application extends \Silex\Application
     public function configureRepository()
     {
         $this['repository.message'] = function($app) { return new Repository\MessageRepository($app['db']); };
+        $this['repository.word_count'] = function($app) { return new Repository\WordCountRepository($app['db']); };
     }
 
     public function configureApiSchemaValidator()
@@ -199,5 +200,47 @@ class Application extends \Silex\Application
         }
 
         return $result;
+    }
+
+    /**
+     * 占い結果を返す
+     *
+     * @return [String] 占い結果
+     */
+    public function getFortuneTelling() {
+      $rand = rand(1, 10);
+      switch($rand) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+          return "吉";
+          break;
+        case 8:
+        case 9:
+          return "大吉";
+          break;
+        case 10:
+          return "凶";
+          break;
+        default:
+          return "吉";
+      }
+    }
+
+    /**
+     * 受け取った単語をカウントアップする
+     *
+     * @param word [String] カウントアップする単語
+     * @return count [Int] カウントアップした後の値
+     */
+    public function incrementWordCount($word) {
+      // 将来的に'hoge'以外の単語もカウントアップできるようにしたいので
+      // 変数で受け取っておく
+      // FIXME: あらかじめ決めた単語以外にも対応する場合は、DBにその単語が登録されているかチェックしないとエラーになる
+      return $this['repository.word_count']->increment($word);
     }
 }
