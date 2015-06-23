@@ -90,6 +90,7 @@ class Application extends \Silex\Application
     public function configureRepository()
     {
         $this['repository.message'] = function($app) { return new Repository\MessageRepository($app['db']); };
+        $this['repository.word_count'] = function($app) { return new Repository\WordCountRepository($app['db']); };
     }
 
     public function configureApiSchemaValidator()
