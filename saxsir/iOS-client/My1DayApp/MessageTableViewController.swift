@@ -89,7 +89,7 @@ class MessageTableViewController: UITableViewController, PostViewControllerDelag
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         // Mission1-3 メッセージ削除処理の実装
-        let messageId = indexPath.row + 1
+        let messageId = self.messages[indexPath.row].identifier
         APIRequest.deleteMessage(String(messageId)) {
             [weak self] (data, response, error) -> Void in
             self!.reloadMessageTableView()
