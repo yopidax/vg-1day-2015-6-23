@@ -35,16 +35,18 @@ function appendMessages(data) {
  */
 function appendMessage(message) {
 	var escapeBody = $("<div/>").text(message.body).html();
+	var escapeCreatedAt = $("<div/>").text(message.created_at).html();
 	var escapeIcon = $("<div/>").text(message.icon).html();
 
     var messageHTML = '<tr><td>' +
-        '<div class="media message">'　+
+        '<div class="media message">' +
         '<div class="media-left" id="top-aligned-media">' +
         '<img class="media-object" src="data:image/png;base64,' + escapeIcon + '" data-holder-rendered="true" style="width: 64px; height: 64px;">' +
         '</div>' +
         '<div class="media-body">' +
         '<h4 class="media-heading"></h4>' +
-        escapeBody +
+        escapeBody + '<br>' +
+        escapeCreatedAt +
 	    '</div>' +
         '</div>' +
         '</td></tr>';
