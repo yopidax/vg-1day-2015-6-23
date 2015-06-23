@@ -36,7 +36,8 @@ function appendMessages(data) {
 function appendMessage(message) {
 	var escapeBody = $("<div/>").text(message.body).html();
 	var escapeIcon = $("<div/>").text(message.icon).html();
-
+  var escapeTime = $("<div/>").text(message.created_at).html();
+    
     var messageHTML = '<tr><td>' +
         '<div class="media message">'　+
         '<div class="media-left" id="top-aligned-media">' +
@@ -45,7 +46,8 @@ function appendMessage(message) {
         '<div class="media-body">' +
         '<h4 class="media-heading"></h4>' +
         escapeBody +
-	    '</div>' +
+        '<p>' + escapeTime + '</p>' + 
+	      '</div>' +
         '</div>' +
         '</td></tr>';
 	$("#message-table").append(messageHTML);
@@ -78,3 +80,5 @@ function postMessage(body, success, error) {
     .done(function(data) { success() })
     .fail(function() { error() });
 }
+
+
