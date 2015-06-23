@@ -92,7 +92,7 @@ class MessageTableViewController: UITableViewController, PostViewControllerDelag
         let messageId = indexPath.row + 1
         APIRequest.deleteMessage(String(messageId)) {
             [weak self] (data, response, error) -> Void in
-            println(response)
+            self!.reloadMessageTableView()
         }
     }
     
