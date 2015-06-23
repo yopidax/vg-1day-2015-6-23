@@ -36,6 +36,7 @@ class PostViewController: UIViewController {
         
         let message = self.messageTextView.text ?? ""
         // Mission1-2 UITextField のインスタンス変数から値を取得
+        // FIXME: テキストフィールドが空でも"名無し"にならない（空文字のまま送信される）
         let username = self.usernameTextField.text ?? "名無し"
         
         // Mission1-2 posetMessage の第2引数に 任意の値を渡す
