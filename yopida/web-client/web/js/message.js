@@ -34,17 +34,18 @@ function appendMessages(data) {
  * メッセージ挿入
  */
 function appendMessage(message) {
+  var escapeName = $("<div/>").text(message.username).html();
 	var escapeBody = $("<div/>").text(message.body).html();
 	var escapeIcon = $("<div/>").text(message.icon).html();
   var escapeTime = $("<div/>").text(message.created_at).html();
-    
+    console.log(message);
     var messageHTML = '<tr><td>' +
         '<div class="media message">'　+
         '<div class="media-left" id="top-aligned-media">' +
         '<img class="media-object" src="data:image/png;base64,' + escapeIcon + '" data-holder-rendered="true" style="width: 64px; height: 64px;">' +
         '</div>' +
         '<div class="media-body">' +
-        '<h4 class="media-heading"></h4>' +
+        '<h4 class="media-heading">' + escapeName + '</h4>' +
         escapeBody +
         '<p>' + escapeTime + '</p>' + 
 	      '</div>' +
