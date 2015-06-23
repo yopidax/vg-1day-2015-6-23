@@ -36,9 +36,10 @@ class PostViewController: UIViewController {
         
         let message = self.messageTextView.text ?? ""
         // Mission1-2 UITextField のインスタンス変数から値を取得
+        let username = self.usernameTextField.text ?? "名無し"
         
         // Mission1-2 posetMessage の第2引数に 任意の値を渡す
-        APIRequest.postMessage(message, username: "名前はまだない") {
+        APIRequest.postMessage(message, username: username) {
             [weak self] (data, response, error) -> Void in
             
             self?.delegate?.postViewController(self!, didTouchUpCloseButton: sender)
