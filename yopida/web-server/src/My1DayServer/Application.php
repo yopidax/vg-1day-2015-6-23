@@ -158,7 +158,7 @@ class Application extends \Silex\Application
         $id = $this['repository.message']->createMessage([
             'username' => $username,
             'body' => $body,
-            'icon' => $icon,
+            'icon' => $icon
         ]);
 
         return $this->getMessage($id);

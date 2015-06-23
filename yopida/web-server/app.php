@@ -27,7 +27,7 @@ $app->post('/messages', function (Request $request) use ($app) {
     if($body == "uranai"){
       $body = $uranai[rand(1,3)];
     }
-
+    //$conunt = 0; 
     $createdMessage = $app->createMessage($username, $body, base64_encode(file_get_contents($app['icon_image_path'])));
 
     return $app->json($createdMessage);

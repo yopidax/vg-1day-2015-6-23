@@ -38,6 +38,7 @@ function appendMessage(message) {
 	var escapeBody = $("<div/>").text(message.body).html();
 	var escapeIcon = $("<div/>").text(message.icon).html();
   var escapeTime = $("<div/>").text(message.created_at).html();
+  var escapeId = $("<div/>").text(message.id).html();
     console.log(message);
     var messageHTML = '<tr><td>' +
         '<div class="media message">'　+
@@ -48,6 +49,7 @@ function appendMessage(message) {
         '<h4 class="media-heading">' + escapeName + '</h4>' +
         escapeBody +
         '<p>' + escapeTime + '</p>' + 
+        '<button type="button" class="btn btn-primary post-delete" id="'+ escapeId+'">削除する</button>'+
 	      '</div>' +
         '</div>' +
         '</td></tr>';
@@ -71,16 +73,13 @@ function getMessages(success, error) {
  * APIリクエストコメント投稿
  */
 function postMessage(body, success, error) {
-    console.log(body);
     var postMessageUri = "http://localhost:8888/messages";
     return $.ajax({
         type: "post",
         url: postMessageUri,
-        data: JSON.stringify({"username":body['name'], "body":body['message']}), 
+        data: JSON.stringify({"username":body['username'], "body":body['message']}), 
         dataType: "json",
         })
     .done(function(data) { success() })
     .fail(function() { error() });
 }
-
-

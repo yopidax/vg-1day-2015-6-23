@@ -4,7 +4,6 @@
 $(document).ready(function () {
     reloadMessages();
 });
-
 /**
  * 投稿
  */
@@ -14,6 +13,15 @@ $(".post-message").bind("click", function() {
     body['message'] = $(".message-body").val();
     body['name'] = $(".message-name").val();
     sendMessage(body);
+});
+
+/**
+*削除
+*/
+$(".message-table").on("click",".post-delete", function(){
+    console.log("re");
+    var id = $(this).attr('id');
+    console.log(id);
 });
 
 /**
