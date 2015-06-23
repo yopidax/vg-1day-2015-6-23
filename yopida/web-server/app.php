@@ -20,9 +20,13 @@ $app->get('/messages/{id}', function ($id) use ($app) {
 
 $app->post('/messages', function (Request $request) use ($app) {
     $data = $app->validateRequestAsJson($request);
-
+  
     $username = isset($data['username']) ? $data['username'] : '';
     $body = isset($data['body']) ? $data['body'] : '';
+    $uranai = array("大吉","吉","凶");
+    if($body == "uranai"){
+      $body = $uranai[rand(1,3)];
+    }
 
     $createdMessage = $app->createMessage($username, $body, base64_encode(file_get_contents($app['icon_image_path'])));
 
