@@ -230,4 +230,17 @@ class Application extends \Silex\Application
           return "吉";
       }
     }
+
+    /**
+     * 受け取った単語をカウントアップする
+     *
+     * @param word [String] カウントアップする単語
+     * @return count [Int] カウントアップした後の値
+     */
+    public function incrementWordCount($word) {
+      // 将来的に'hoge'以外の単語もカウントアップできるようにしたいので
+      // 変数で受け取っておく
+      // FIXME: あらかじめ決めた単語以外にも対応する場合は、DBにその単語が登録されているかチェックしないとエラーになる
+      return $this['repository.word_count']->increment($word);
+    }
 }
