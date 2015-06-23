@@ -207,6 +207,26 @@ class Application extends \Silex\Application
      * @return [String] 占い結果
      */
     public function getFortuneTelling() {
-      return "吉";
+      $rand = rand(1, 10);
+      switch($rand) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+          return "吉";
+          break;
+        case 8:
+        case 9:
+          return "大吉";
+          break;
+        case 10:
+          return "凶";
+          break;
+        default:
+          return "吉";
+      }
     }
 }
