@@ -71,11 +71,12 @@ function getMessages(success, error) {
  * APIリクエストコメント投稿
  */
 function postMessage(body, success, error) {
+    console.log(body);
     var postMessageUri = "http://localhost:8888/messages";
     return $.ajax({
         type: "post",
         url: postMessageUri,
-        data: JSON.stringify({"username":"名前はまだない", "body":body}), 
+        data: JSON.stringify({"username":body['name'], "body":body['message']}), 
         dataType: "json",
         })
     .done(function(data) { success() })
