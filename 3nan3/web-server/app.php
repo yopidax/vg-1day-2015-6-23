@@ -24,6 +24,20 @@ $app->post('/messages', function (Request $request) use ($app) {
     $username = isset($data['username']) ? $data['username'] : '';
     $body = isset($data['body']) ? $data['body'] : '';
 
+	if($body == "uranai") {
+		switch (rand(0, 2)) {
+		case 0:
+			$body = "大吉";
+			break;
+		case 1:
+			$body = "吉";
+			break;
+		case 2:
+			$body = "凶";
+			break;
+		}
+	}
+
     $createdMessage = $app->createMessage($username, $body, base64_encode(file_get_contents($app['icon_image_path'])));
 
     return $app->json($createdMessage);
