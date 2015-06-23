@@ -1,0 +1,5 @@
+/vendor/bundle
+!/vendor/bundle/.gitkeep
+composer.phar
+!/log/.gitkeep
+/db/api.db
